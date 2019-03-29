@@ -1,15 +1,14 @@
 # CMMR - CEU Mass Mediator API in R
+---
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/cmmr)](https://cran.r-project.org/package=cmmr)
 [![Travis build status](https://travis-ci.org/lzyacht/cmmr.svg?branch=master)](https://travis-ci.org/lzyacht/cmmr)
 <!-- badges: end -->
 
-
-
 Consuming CEU Mass Mediator RESTful API in R.
 
-Thank you @albertogilf for you kindness and help!
+Thank you @albertogilf for your kindness and help!
 
 Please find the CEU Mass Mediator source code repository:
 [CEU Mass Mediator source code on GitHub](https://github.com/albertogilf/ceuMassMediator)
@@ -18,6 +17,7 @@ The CEU Mass Mediator Website:
 [CEU Mass Mediator](http://ceumass.eps.uspceu.es/)
 
 ## API Endpoint
+---
 
 Batch search
 http://ceumass.eps.uspceu.es/mediator/api/v3/batch
@@ -29,21 +29,32 @@ MS/MS search
 http://ceumass.eps.uspceu.es/mediator/api/msmssearch
 
 ## About
+---
 
 CEU Mass Mediator is an online tool that aides researchers in identifying 
-metabolites from mass spectrometry experiments. CEU Mass Mediator is currently
+metabolites from mass spectrometry experiments. It is currently 
 available as a web interface and a RESTful API. CMMR is a RESTful API implemented
 for R. This makes it easy to access CEU Mass Mediator programatically in R, integrating
 search results seamlessly into users custom pipelines and workflows.
 
 ## Installation
+---
 
-```R
-install.packages("devtools")
+
+```r
+install.packages("cmmr")
+```
+
+## Development version
+
+To get a bug fix, or use a feature from the development version, you can install cmmr from GitHub.
+```r
+# install.packages("devtools")
 devtools::install_github("lzyacht/cmmr")
 ```
 
 ## Example
+---
 
 ### Batch search
 
