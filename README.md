@@ -16,7 +16,6 @@ The CEU Mass Mediator Website:
 [CEU Mass Mediator](http://ceumass.eps.uspceu.es/)
 
 ## API Endpoint
----
 
 Batch search
 http://ceumass.eps.uspceu.es/mediator/api/v3/batch
@@ -28,7 +27,6 @@ MS/MS search
 http://ceumass.eps.uspceu.es/mediator/api/msmssearch
 
 ## About
----
 
 CEU Mass Mediator is an online tool that aides researchers in identifying 
 metabolites from mass spectrometry experiments. It is currently 
@@ -37,8 +35,6 @@ for R. This makes it easy to access CEU Mass Mediator programatically in R, inte
 search results seamlessly into users custom pipelines and workflows.
 
 ## Installation
----
-
 
 ```r
 install.packages("cmmr")
@@ -53,7 +49,6 @@ devtools::install_github("lzyacht/cmmr")
 ```
 
 ## Example
----
 
 ### Batch search
 
