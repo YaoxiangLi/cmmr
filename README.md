@@ -1,5 +1,7 @@
 # CMMR - CEU Mass Mediator API in R
 
+[![Build Status](https://travis-ci.org/lzyacht/cmmr.svg?branch=master)](https://travis-ci.org/lzyacht/cmmr)
+
 Consuming CEU Mass Mediator RESTful API in R.
 
 Thank you @albertogilf for you kindness and help!
