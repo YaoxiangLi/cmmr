@@ -81,11 +81,11 @@ str(batch_df_neg)
 
 ### Providing external *.csv files for search
 
-You may want to load your own list of csv files to search the database.
+You may want to load your own list of m/zs from a csv or excel file to search the database.
 
 ```r
 unique_mz_file <- system.file("extdata", "unique_mz.csv", package = "cmmr")
-unique_mz <- read.table(unique_mz_file, sep = ",",stringsAsFactors = FALSE, header = FALSE)
+unique_mz <- read.table(unique_mz_file, sep = ",", stringsAsFactors = FALSE, header = FALSE)
 unique_mz <- as.array(unique_mz[, 1])
 
 batch_df_neg <- batch_search('http://ceumass.eps.uspceu.es/mediator/api/v3/batch',
