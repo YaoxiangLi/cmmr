@@ -1,7 +1,5 @@
 # CMMR - CEU Mass Mediator API in R
 
----
-
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/cmmr)](https://cran.r-project.org/package=cmmr)
 [![Travis build status](https://travis-ci.org/lzyacht/cmmr.svg?branch=master)](https://travis-ci.org/lzyacht/cmmr)
