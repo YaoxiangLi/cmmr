@@ -1,7 +1,7 @@
 Package: cmmr
 Type: Package
-Title: CEU Mass Mediator RESTful API in R
-Version: 0.1.1
+Title: CEU Mass Mediator RESTful API
+Version: 0.1.2
 Date: 2019-03-26
 Depends: R (>= 3.1.0)
 Imports: httr (>= 1.3.1),
@@ -9,11 +9,11 @@ Imports: httr (>= 1.3.1),
   RJSONIO (>= 1.3-0)
 Author: Yaoxiang Li <yl814@georgetown.edu>,
   Charles P. Hinzman <cph51@georgetown.edu>,
-  Amrita K Cheema <akc27@georgetown.edu>
+  Amrita K. Cheema <akc27@georgetown.edu>
 Maintainer: Yaoxiang Li <yl814@georgetown.edu>
-Description: CEU Mass Mediator is an on-line tool for aiding researchers in 
-  performing metabolite annotation. CMMR (CEU Mass Mediator RESTful) API allows 
-  for programmatic access in R: batch search, batch advanced search, MSMS search, etc.
+Description: CEU (CEU San Pablo University) Mass Mediator is an on-line tool for aiding researchers in 
+  performing metabolite annotation. 'cmmr' (CEU Mass Mediator RESTful API) allows 
+  for programmatic access in R: batch search, batch advanced search, MS/MS (tandem mass spectrometry) search, etc.
   For more information about the API Endpoint please go to <https://github.com/lzyacht/cmmr>.
 License: GPL-3
 Encoding: UTF-8
