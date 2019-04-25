@@ -28,10 +28,10 @@ http://ceumass.eps.uspceu.es/mediator/api/msmssearch
 
 ## About
 
-CEU Mass Mediator is an online tool that aides researchers in identifying 
+CEU Mass Mediator is an online tool that aids researchers in identifying 
 metabolites from mass spectrometry experiments. It is currently 
 available as a web interface and a RESTful API. CMMR is a RESTful API implemented
-for R. This makes it easy to access CEU Mass Mediator programatically in R, integrating
+for R. This makes it easy to access CEU Mass Mediator programmatically in R, integrating
 search results seamlessly into users custom pipelines and workflows.
 
 ## Installation
@@ -157,7 +157,7 @@ head(advanced_batch_df)
 str(advanced_batch_df)
 ```
 
-### MSMS Search
+### MS/MS Search
 
 ```r
 library(cmmr)
