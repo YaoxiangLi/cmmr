@@ -9,7 +9,7 @@
 #' @param precursor_mz_tolerance precursor_mz_tolerance
 #' @param precursor_mz_tolerance_mode precursor_mz_tolerance_mode
 #' @param ion_mode ion_mode
-#' @param ionizationVoltage ionizationVoltage
+#' @param ionization_voltage ionization_voltage
 #' @param spectra_types spectra_types
 #'
 #' @return If all inputs are all correctly formatted, a string of a POST request will be returned for the result.
@@ -27,7 +27,7 @@ create_msms_body = function(ion_mass,
                             precursor_mz_tolerance       = 1000.0,
                             precursor_mz_tolerance_mode  = "mDa",
                             ion_mode                     = "positive",
-                            ionizationVoltage            = "all",
+                            ionization_voltage            = "all",
                             spectra_types                = "experimental") {
 
   ms_ms_peaks_vector <- c()
@@ -44,7 +44,7 @@ create_msms_body = function(ion_mass,
                      '"precursor_mz_tolerance":', as.character(precursor_mz_tolerance), ',',
                      '"precursor_mz_tolerance_mode":"', precursor_mz_tolerance_mode, '",',
                      '"ion_mode":"', ion_mode, '",',
-                     '"ionizationVoltage":"',ionizationVoltage, '",',
+                     '"ionization_voltage":"',ionization_voltage, '",',
                      '"spectra_types":["experimental","predicted"]',
                      '}')
 }

@@ -7,7 +7,7 @@
 msms_search(ion_mass, ms_ms_peaks, precursor_ion_tolerance = 100,
   precursor_ion_tolerance_mode = "mDa", precursor_mz_tolerance = 500,
   precursor_mz_tolerance_mode = "mDa", ion_mode,
-  ionizationVoltage = "all", spectra_types = "experimental",
+  ionization_voltage = "all", spectra_types = "experimental",
   cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/msmssearch")
 }
 \arguments{
@@ -25,7 +25,7 @@ msms_search(ion_mass, ms_ms_peaks, precursor_ion_tolerance = 100,
 
 \item{ion_mode}{ion_mode}
 
-\item{ionizationVoltage}{ionizationVoltage}
+\item{ionization_voltage}{ionization_voltage}
 
 \item{spectra_types}{spectra_types}
 

@@ -21,9 +21,9 @@ test_that("Batch search POST request Body is correctly created in positive mode"
     precursor_mz_tolerance       = 1000.0,
     precursor_mz_tolerance_mode  = "mDa",
     ion_mode                     = "positive",
-    ionizationVoltage            = "all",
+    ionization_voltage           = "all",
     spectra_types                = "experimental"),
-    "{\"ion_mass\":147,\"ms_ms_peaks\":[{\"mz\":40.948,\"intensity\":0.174},{\"mz\":56.022,\"intensity\":0.424},{\"mz\":84.37,\"intensity\":53.488},{\"mz\":101.5,\"intensity\":8.285},{\"mz\":102.401,\"intensity\":0.775},{\"mz\":129.67,\"intensity\":100},{\"mz\":146.966,\"intensity\":20.07}],\"precursor_ion_tolerance\":500,\"precursor_ion_tolerance_mode\":\"mDa\",\"precursor_mz_tolerance\":1000,\"precursor_mz_tolerance_mode\":\"mDa\",\"ion_mode\":\"positive\",\"ionizationVoltage\":\"all\",\"spectra_types\":[\"experimental\",\"predicted\"]}")
+    "{\"ion_mass\":147,\"ms_ms_peaks\":[{\"mz\":40.948,\"intensity\":0.174},{\"mz\":56.022,\"intensity\":0.424},{\"mz\":84.37,\"intensity\":53.488},{\"mz\":101.5,\"intensity\":8.285},{\"mz\":102.401,\"intensity\":0.775},{\"mz\":129.67,\"intensity\":100},{\"mz\":146.966,\"intensity\":20.07}],\"precursor_ion_tolerance\":500,\"precursor_ion_tolerance_mode\":\"mDa\",\"precursor_mz_tolerance\":1000,\"precursor_mz_tolerance_mode\":\"mDa\",\"ion_mode\":\"positive\",\"ionization_voltage\":\"all\",\"spectra_types\":[\"experimental\",\"predicted\"]}")
 })
 
 # msms_search(ion_mass = 147, ms_ms_peaks = ms_ms_peaks, ion_mode = 'positive')

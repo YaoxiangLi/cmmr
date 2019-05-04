@@ -11,7 +11,7 @@
 #' @param precursor_mz_tolerance precursor_mz_tolerance
 #' @param precursor_mz_tolerance_mode precursor_mz_tolerance_mode
 #' @param ion_mode ion_mode
-#' @param ionizationVoltage ionizationVoltage
+#' @param ionization_voltage ionization_voltage
 #' @param spectra_types spectra_types
 #' @param cmm_url "http://ceumass.eps.uspceu.es/mediator/api/msmssearch" or your local one
 #'
@@ -43,7 +43,7 @@ msms_search = function(ion_mass,
                        precursor_mz_tolerance = 500.0,
                        precursor_mz_tolerance_mode = "mDa",
                        ion_mode,
-                       ionizationVoltage = "all",
+                       ionization_voltage = "all",
                        spectra_types = "experimental",
                        cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/msmssearch") {
 
@@ -66,7 +66,7 @@ msms_search = function(ion_mass,
   body <- create_msms_body(ion_mass, ms_ms_peaks,
                            precursor_ion_tolerance, precursor_ion_tolerance_mode,
                            precursor_mz_tolerance, precursor_mz_tolerance_mode,
-                           ion_mode,ionizationVoltage, spectra_types)
+                           ion_mode,ionization_voltage, spectra_types)
   if (cmm_url == 'http://ceumass.eps.uspceu.es/mediator/api/msmssearch') {
     # print("Using the CEU Mass Mediator server API.")
   } else {
