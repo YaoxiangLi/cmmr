@@ -63,9 +63,9 @@ batch_df_pos <- batch_search('http://ceumass.eps.uspceu.es/mediator/api/v3/batch
                              'mz',
                              'positive',
                              '["M+H","M+Na"]',
-                             100,
+                             10,
                              'ppm',
-                             c(670.4623, 1125.2555, 602.6180))
+                             c(178.1219, 243.9134, 977.6763))
 
 
 head(batch_df_pos)
