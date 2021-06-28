@@ -7,7 +7,7 @@
 
 CEU Mass Mediator RESTful API
 
-Thank you @albertogilf for your kindness and help!
+Special thanks to @albertogilf!
 
 Please find the CEU Mass Mediator source code repository:
 [CEU Mass Mediator source code on GitHub](https://github.com/albertogilf/ceuMassMediator)
