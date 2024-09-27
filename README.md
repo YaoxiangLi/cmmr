@@ -45,7 +45,7 @@ install.packages("cmmr")
 To get a bug fix, or use a feature from the development version, you can install cmmr from GitHub.
 ```r
 # install.packages("devtools")
-devtools::install_github("lzyacht/cmmr")
+devtools::install_github("YaoxiangLi/cmmr")
 ```
 
 ## Example
