@@ -4,11 +4,18 @@
 \alias{msms_search}
 \title{Encapsulation of CEU Mass Mediator batch search API.}
 \usage{
-msms_search(ion_mass, ms_ms_peaks, precursor_ion_tolerance = 100,
-  precursor_ion_tolerance_mode = "mDa", precursor_mz_tolerance = 500,
-  precursor_mz_tolerance_mode = "mDa", ion_mode,
-  ionization_voltage = "all", spectra_types = "experimental",
-  cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/msmssearch")
+msms_search(
+  ion_mass,
+  ms_ms_peaks,
+  precursor_ion_tolerance = 100,
+  precursor_ion_tolerance_mode = "mDa",
+  precursor_mz_tolerance = 500,
+  precursor_mz_tolerance_mode = "mDa",
+  ion_mode,
+  ionization_voltage = "all",
+  spectra_types = "experimental",
+  cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/msmssearch"
+)
 }
 \arguments{
 \item{ion_mass}{ion_mass}
