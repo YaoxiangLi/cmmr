@@ -16,58 +16,61 @@
 #' @param cmm_url "http://ceumass.eps.uspceu.es/mediator/api/msmssearch" or your local one
 #'
 #' @return If all inputs are all correctly formatted, a dataframe will be returned for the result.
-#' @examples ms_ms_peaks = matrix(
-#' c(40.948, 0.174,
-#'   56.022, 0.424,
-#'   84.37, 53.488,
-#'   101.50, 8.285,
-#'   102.401, 0.775,
-#'   129.670, 100.000,
-#'   146.966, 20.070),
-#' ncol = 2,
-#' byrow = TRUE)
+#' @examples ms_ms_peaks <- matrix(
+#'   c(
+#'     40.948, 0.174,
+#'     56.022, 0.424,
+#'     84.37, 53.488,
+#'     101.50, 8.285,
+#'     102.401, 0.775,
+#'     129.670, 100.000,
+#'     146.966, 20.070
+#'   ),
+#'   ncol = 2,
+#'   byrow = TRUE
+#' )
 #'
-#' msms_search(ion_mass = 147, ms_ms_peaks = ms_ms_peaks, ion_mode = 'positive')
+#' msms_search(ion_mass = 147, ms_ms_peaks = ms_ms_peaks, ion_mode = "positive")
 #'
-#' @author Yaoxiang Li \email{yl814@georgetown.edu}
-#'
-#' Georgetown University, USA
-#'
-#' License: GPL (>= 3)
 #' @export
 #'
-msms_search = function(ion_mass,
-                       ms_ms_peaks,
-                       precursor_ion_tolerance = 100.0,
-                       precursor_ion_tolerance_mode = "mDa",
-                       precursor_mz_tolerance = 500.0,
-                       precursor_mz_tolerance_mode = "mDa",
-                       ion_mode,
-                       ionization_voltage = "all",
-                       spectra_types = "experimental",
-                       cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/msmssearch") {
+msms_search <- function(ion_mass,
+                        ms_ms_peaks,
+                        precursor_ion_tolerance = 100.0,
+                        precursor_ion_tolerance_mode = "mDa",
+                        precursor_mz_tolerance = 500.0,
+                        precursor_mz_tolerance_mode = "mDa",
+                        ion_mode,
+                        ionization_voltage = "all",
+                        spectra_types = "experimental",
+                        cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/msmssearch") {
+  columns_to_save <- c(
+    "spectral_display_tools",
+    "identifier",
+    "hmdb_compound",
+    "name",
+    "formula",
+    "mass",
+    "score"
+  )
 
-  columns_to_save = c("spectral_display_tools",
-                      "identifier",
-                      "hmdb_compound",
-                      "name",
-                      "formula",
-                      "mass",
-                      "score")
+  columns_to_name <- c(
+    "Spectral_display_tools",
+    "Identifier",
+    "HMDB_ID",
+    "Name",
+    "Formula",
+    "Mass",
+    "Score"
+  )
 
-  columns_to_name = c("Spectral_display_tools",
-                      "Identifier",
-                      "HMDB_ID",
-                      "Name",
-                      "Formula",
-                      "Mass",
-                      "Score")
-
-  body <- create_msms_body(ion_mass, ms_ms_peaks,
-                           precursor_ion_tolerance, precursor_ion_tolerance_mode,
-                           precursor_mz_tolerance, precursor_mz_tolerance_mode,
-                           ion_mode,ionization_voltage, spectra_types)
-  if (cmm_url == 'http://ceumass.eps.uspceu.es/mediator/api/msmssearch') {
+  body <- create_msms_body(
+    ion_mass, ms_ms_peaks,
+    precursor_ion_tolerance, precursor_ion_tolerance_mode,
+    precursor_mz_tolerance, precursor_mz_tolerance_mode,
+    ion_mode, ionization_voltage, spectra_types
+  )
+  if (cmm_url == "http://ceumass.eps.uspceu.es/mediator/api/msmssearch") {
     # print("Using the CEU Mass Mediator server API.")
   } else {
     print("Using the local/3rd party server API.")
@@ -88,7 +91,8 @@ msms_search = function(ion_mass,
       format = "  Parsing database search results [:bar] :percent in :elapsed",
       total  = length(json_file) - 1,
       clear  = FALSE,
-      width  = 100)
+      width  = 100
+    )
 
     df <- json_file[[1]]
     df <- as.data.frame(df[names(df) %in% columns_to_save])
