@@ -4,10 +4,17 @@
 \alias{create_msms_body}
 \title{Create MS/MS search POST request body}
 \usage{
-create_msms_body(ion_mass, ms_ms_peaks, precursor_ion_tolerance = 500,
-  precursor_ion_tolerance_mode = "mDa", precursor_mz_tolerance = 1000,
-  precursor_mz_tolerance_mode = "mDa", ion_mode = "positive",
-  ionization_voltage = "all", spectra_types = "experimental")
+create_msms_body(
+  ion_mass,
+  ms_ms_peaks,
+  precursor_ion_tolerance = 500,
+  precursor_ion_tolerance_mode = "mDa",
+  precursor_mz_tolerance = 1000,
+  precursor_mz_tolerance_mode = "mDa",
+  ion_mode = "positive",
+  ionization_voltage = "all",
+  spectra_types = "experimental"
+)
 }
 \arguments{
 \item{ion_mass}{ion_mass}
