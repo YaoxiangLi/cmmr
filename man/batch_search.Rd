@@ -4,12 +4,17 @@
 \alias{batch_search}
 \title{Encapsulation of CEU Mass Mediator batch search API}
 \usage{
-
-  batch_search(cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/v3/batch",
+batch_search(
+  cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/v3/batch",
   metabolites_type = "all-except-peptides",
-  databases = "[\\"all-except-mine\\"]", masses_mode = "mz",
-  ion_mode = "positive", adducts = "[\\"M+H\\",\\"M+Na\\"]",
-  tolerance = 10, tolerance_mode = "ppm", unique_mz)
+  databases = "[\\"all-except-mine\\"]",
+  masses_mode = "mz",
+  ion_mode = "positive",
+  adducts = "[\\"M+H\\",\\"M+Na\\"]",
+  tolerance = 10,
+  tolerance_mode = "ppm",
+  unique_mz
+)
 }
 \arguments{
 \item{cmm_url}{'http://ceumass.eps.uspceu.es/mediator/api/v3/batch' or your local API Endpoint}
