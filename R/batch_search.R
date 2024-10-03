@@ -41,44 +41,42 @@
 #' \dontrun{
 #' batch_search(c(670.4623, 1125.2555, 602.6180))
 #' }
-#' @author Yaoxiang Li \email{yl814@georgetown.edu}
-#'
-#' Georgetown University, USA
-#'
-#' License: GPL (>= 3)
 #' @export
 #'
-batch_search <- function(cmm_url          = "http://ceumass.eps.uspceu.es/mediator/api/v3/batch",
-                         metabolites_type = 'all-except-peptides',
-                         databases        = '["all-except-mine"]',
-                         masses_mode      = 'mz',
-                         ion_mode         = 'positive',
-                         adducts          = '["M+H","M+Na"]',
-                         tolerance        = 10,
-                         tolerance_mode   = 'ppm',
+batch_search <- function(cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/v3/batch",
+                         metabolites_type = "all-except-peptides",
+                         databases = '["all-except-mine"]',
+                         masses_mode = "mz",
+                         ion_mode = "positive",
+                         adducts = '["M+H","M+Na"]',
+                         tolerance = 10,
+                         tolerance_mode = "ppm",
                          unique_mz) {
+  columns_to_save <- c(
+    "identifier", "EM", "name", "formula", "adduct",
+    "molecular_weight", "error_ppm",
+    "ionizationScore", "finalScore",
+    "kegg_compound", "kegg_uri",
+    "hmdb_compound", "hmdb_uri",
+    "lipidmaps_compound", "lipidmaps_uri",
+    "metlin_compound", "metlin_uri",
+    "pubchem_compound", "pubchem_uri"
+  )
 
-  columns_to_save = c("identifier", "EM", "name", "formula", "adduct",
-                      "molecular_weight", "error_ppm",
-                      "ionizationScore", "finalScore",
-                      "kegg_compound", "kegg_uri",
-                      "hmdb_compound", "hmdb_uri",
-                      "lipidmaps_compound", "lipidmaps_uri",
-                      "metlin_compound", "metlin_uri",
-                      "pubchem_compound", "pubchem_uri")
-
-  columns_to_name = c("identifier", "experimental_mass", "name", "formula", "adduct",
-                      "molecular_weight", "error_ppm",
-                      "ionization_score", "final_score",
-                      "Kegg", "Kegg_URI",
-                      "HMDB", "HMDB_URI",
-                      "LipidMaps", "LipidMaps_URI",
-                      "Metlin", "Metlin_URI",
-                      "PubChem", "PubChem_URI")
+  columns_to_name <- c(
+    "identifier", "experimental_mass", "name", "formula", "adduct",
+    "molecular_weight", "error_ppm",
+    "ionization_score", "final_score",
+    "Kegg", "Kegg_URI",
+    "HMDB", "HMDB_URI",
+    "LipidMaps", "LipidMaps_URI",
+    "Metlin", "Metlin_URI",
+    "PubChem", "PubChem_URI"
+  )
 
   body <- create_batch_body(metabolites_type, databases, masses_mode, ion_mode, adducts, tolerance, tolerance_mode, unique_mz)
 
-  if (cmm_url == 'http://ceumass.eps.uspceu.es/mediator/api/v3/batch') {
+  if (cmm_url == "http://ceumass.eps.uspceu.es/mediator/api/v3/batch") {
     cat("Using the CEU Mass Mediator server API.\n")
   } else {
     cat("Using the local/3rd party server API.\n")
@@ -100,7 +98,8 @@ batch_search <- function(cmm_url          = "http://ceumass.eps.uspceu.es/mediat
       format = "  Parsing database search results [:bar] :percent in :elapsed",
       total  = length(json_file) - 1,
       clear  = FALSE,
-      width  = 100)
+      width  = 100
+    )
 
     df <- json_file[[1]]
     df <- as.data.frame(df[names(df) %in% columns_to_save])
@@ -109,13 +108,13 @@ batch_search <- function(cmm_url          = "http://ceumass.eps.uspceu.es/mediat
         pb$tick()
         dfi <- json_file[[i]]
         dfi <- as.data.frame(dfi[names(dfi) %in% columns_to_save])
-        df  <- rbind(df, dfi)
+        df <- rbind(df, dfi)
       }
     }
 
 
-    df = df[, columns_to_save]
-    colnames(df) = columns_to_name
+    df <- df[, columns_to_save]
+    colnames(df) <- columns_to_name
 
     # if (ion_mode == "positive"){
     #   utils::write.table(df, sub(".csv", "_pos_db_search.csv", unique_mz_file),
