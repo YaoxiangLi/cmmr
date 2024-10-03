@@ -4,10 +4,16 @@
 \alias{create_batch_body}
 \title{Create POST request Body for batch search}
 \usage{
-create_batch_body(metabolites_type = "all-except-peptides",
-  databases = "[\\"all-except-mine\\"]", masses_mode = "mz",
-  ion_mode = "positive", adducts = "[\\"M+H\\",\\"M+Na\\"]",
-  tolerance = 10, tolerance_mode = "ppm", unique_mz)
+create_batch_body(
+  metabolites_type = "all-except-peptides",
+  databases = "[\\"all-except-mine\\"]",
+  masses_mode = "mz",
+  ion_mode = "positive",
+  adducts = "[\\"M+H\\",\\"M+Na\\"]",
+  tolerance = 10,
+  tolerance_mode = "ppm",
+  unique_mz
+)
 }
 \arguments{
 \item{metabolites_type}{"all-except-peptides", "only-lipids", "all-including-peptides"}
