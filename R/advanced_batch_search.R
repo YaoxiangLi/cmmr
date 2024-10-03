@@ -46,11 +46,6 @@
 #'     '{ "mz": 311.20145, "intensity": 400.03336 }]]'
 #'   )
 #' )
-#' @author Yaoxiang Li \email{yl814@georgetown.edu}
-#'
-#' Georgetown University, USA
-#'
-#' License: GPL (>= 3)
 #' @export
 #'
 advanced_batch_search <- function(
