@@ -2,92 +2,93 @@
 % Please edit documentation in R/batch-search-advanced.R
 \name{advanced_batch_search}
 \alias{advanced_batch_search}
-\title{Encapsulation of CEU Mass Mediator advanced batch search API.}
+\title{Advanced Batch Search using CEU Mass Mediator API}
 \usage{
 advanced_batch_search(
-  cmm_url = paste0("https://ceumass.eps.uspceu.es/api/v3/advancedbatch", "advancedbatch"),
-  chemical_alphabet = "all",
+  cmm_url = "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
+  chemical_alphabet = "ALL",
   modifiers_type = "none",
   metabolites_type = "all-except-peptides",
-  databases = "[\\"hmdb\\"]",
+  databases = "[\\"HMDB\\"]",
   masses_mode = "mz",
   ion_mode = "positive",
   adducts = "[\\"all\\"]",
-  deuterium = "false",
-  tolerance = "7.5",
+  deuterium = FALSE,
+  tolerance = 7.5,
   tolerance_mode = "ppm",
-  masses = "[400.3432, 288.2174]",
+  masses = c(400.3432, 288.2174),
   all_masses = "[]",
-  retention_times = "[18.842525, 4.021555]",
+  retention_times = c(18.842525, 4.021555),
   all_retention_times = "[]",
-  composite_spectra = paste0("[[{ \\"mz\\": 400.3432, \\"intensity\\": 307034.88 }, ",
-    "{ \\"mz\\": 311.20145, \\"intensity\\": 400.03336 }]]")
+  composite_spectra =
+    "[ [ { \\"mz\\": 400.3432, \\"intensity\\": 307034.88 }, { \\"mz\\": 311.20145, \\"intensity\\": 400.03336 } ] ]"
 )
 }
 \arguments{
-\item{cmm_url}{'http://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch' or your local one}
+\item{cmm_url}{A character string specifying the CEU Mass Mediator API endpoint.
+Default is \code{"https://ceumass.eps.uspceu.es/api/v3/advancedbatch"}.}
 
-\item{chemical_alphabet}{"CHNOPS", "CHNOPSCL", "ALL"}
+\item{chemical_alphabet}{A character string specifying the chemical alphabet to use.
+Options are \code{"CHNOPS"}, \code{"CHNOPSCL"}, or \code{"ALL"}.}
 
-\item{modifiers_type}{"none", "NH3", "HCOO", "CH3COO", "HCOONH3", "CH3COONH3"}
+\item{modifiers_type}{A character string specifying the modifier type.
+Options are \code{"none"}, \code{"NH3"}, \code{"HCOO"}, \code{"CH3COO"}, \code{"HCOONH3"}, or \code{"CH3COONH3"}.}
 
-\item{metabolites_type}{"all-except-peptides", "only-lipids", "all-including-peptides"}
+\item{metabolites_type}{A character string specifying the metabolites type.
+Options are \code{"all-except-peptides"}, \code{"only-lipids"}, or \code{"all-including-peptides"}.}
 
-\item{databases}{"all", "all-except-mine", "HMDB", "LipidMaps", "Metlin", "Kegg", "in-house", "mine"}
+\item{databases}{A JSON-formatted character string specifying the databases to search.
+Examples include \code{'["all"]'}, \code{'["HMDB"]'}, \code{'["LipidMaps"]'}.}
 
-\item{masses_mode}{"neutral", "mz"}
+\item{masses_mode}{A character string specifying the masses mode. Options are \code{"neutral"} or \code{"mz"}.}
 
-\item{ion_mode}{"positive", "negative"}
+\item{ion_mode}{A character string specifying the ionization mode. Options are \code{"positive"}, \code{"negative"}, or \code{"neutral"}.}
 
-\item{adducts}{for positive mode ["M+H", "M+2H", "M+Na", "M+K", "M+NH4", "M+H-H2O"] for negative mode ["M-H", "M+Cl", "M+FA-H", "M-H-H2O"], for neutral ["M"]}
+\item{adducts}{A JSON-formatted character string specifying the adducts to include in the search.
+Examples include \code{'["M+H","M+Na"]'} for positive mode.}
 
-\item{deuterium}{boolean 'true' 'false'}
+\item{deuterium}{A logical value indicating whether to consider deuterium substitutions. \code{TRUE} or \code{FALSE}.}
 
-\item{tolerance}{double (Range: [0..100])}
+\item{tolerance}{A numeric value specifying the mass tolerance (Range: \code{0} to \code{100}).}
 
-\item{tolerance_mode}{"ppm", "mDa"}
+\item{tolerance_mode}{A character string specifying the tolerance mode. Options are \code{"ppm"} or \code{"mDa"}.}
 
-\item{masses}{double}
+\item{masses}{A numeric vector of masses to search.}
 
-\item{all_masses}{array of doubles}
+\item{all_masses}{A JSON-formatted character string representing an array of mass arrays.}
 
-\item{retention_times}{double}
+\item{retention_times}{A numeric vector of retention times corresponding to the masses.}
 
-\item{all_retention_times}{array of doubles}
+\item{all_retention_times}{A JSON-formatted character string representing an array of retention time arrays.}
 
-\item{composite_spectra}{array of arrays of spectra_object}
+\item{composite_spectra}{A JSON-formatted character string representing composite spectra.}
 }
 \value{
-If all inputs are all correctly formatted, a dataframe will be returned for the result.
+A dataframe containing the search results from the CEU Mass Mediator API.
 }
 \description{
-\code{advanced_batch_search} returns the body string of a POST request.
-  using the following code to install the dependencies:
-  install.packages(c("httr", "progress", "RJSONIO"))
+\code{advanced_batch_search} performs an advanced batch search on the CEU Mass Mediator API
+and returns a dataframe of search results.
 }
 \examples{
+\dontrun{
 df <- advanced_batch_search(
-  cmm_url = paste0(
-    "http://ceumass.eps.uspceu.es/mediator/api/v3/",
-    "advancedbatch"
-  ),
-  chemical_alphabet = "all",
+  cmm_url = "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
+  chemical_alphabet = "ALL",
   modifiers_type = "none",
   metabolites_type = "all-except-peptides",
-  databases = '["hmdb"]',
+  databases = '["HMDB"]',
   masses_mode = "mz",
   ion_mode = "positive",
   adducts = '["all"]',
-  deuterium = "false",
-  tolerance = "7.5",
+  deuterium = FALSE,
+  tolerance = 7.5,
   tolerance_mode = "ppm",
-  masses = "[400.3432, 288.2174]",
+  masses = c(400.3432, 288.2174),
   all_masses = "[]",
-  retention_times = "[18.842525, 4.021555]",
+  retention_times = c(18.842525, 4.021555),
   all_retention_times = "[]",
-  composite_spectra = paste0(
-    '[[{ "mz": 400.3432, "intensity": 307034.88 }, ',
-    '{ "mz": 311.20145, "intensity": 400.03336 }]]'
-  )
+  composite_spectra = '[ [ { "mz": 400.3432, "intensity": 307034.88 }, { "mz": 311.20145, "intensity": 400.03336 } ] ]'
 )
+}
 }
