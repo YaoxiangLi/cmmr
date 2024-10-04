@@ -4,7 +4,7 @@
 #'   using the following code to install the dependencies:
 #'   install.packages(c("httr", "progress", "RJSONIO"))
 #'
-#' @param cmm_url 'http://ceumass.eps.uspceu.es/mediator/api/v3/batch' or your local API Endpoint
+#' @param cmm_url 'https://ceumass.eps.uspceu.es/api/v3/batch' or your local API Endpoint
 #' @param metabolites_type "all-except-peptides", "only-lipids", "all-including-peptides"
 #' @param databases "all", "all-except-mine", "HMDB", "LipidMaps", "Metlin", "Kegg", "in-house", "mine"
 #' @param masses_mode "neutral", "mz"
@@ -18,7 +18,7 @@
 #' @return dataframe for search results
 #' @examples
 #'
-# df_pos <- batch_search('http://ceumass.eps.uspceu.es/mediator/api/v3/batch',
+# df_pos <- batch_search('https://ceumass.eps.uspceu.es/api/v3/batch',
 #                        'all-except-peptides',
 #                        '["all-except-mine"]',
 #                        'mz',
@@ -28,7 +28,7 @@
 #                        'ppm',
 #                        c(670.4623, 1125.2555, 602.6180))
 #'
-# df_neg <- batch_search('http://ceumass.eps.uspceu.es/mediator/api/v3/batch',
+# df_neg <- batch_search('https://ceumass.eps.uspceu.es/api/v3/batch',
 #                        'all-except-peptides',
 #                        '["all-except-mine"]',
 #                        'mz',
@@ -43,7 +43,7 @@
 #' }
 #' @export
 #'
-batch_search <- function(cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/v3/batch",
+batch_search <- function(cmm_url = "https://ceumass.eps.uspceu.es/api/v3/batch",
                          metabolites_type = "all-except-peptides",
                          databases = '["all-except-mine"]',
                          masses_mode = "mz",
@@ -76,7 +76,7 @@ batch_search <- function(cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/v3
 
   body <- create_batch_body(metabolites_type, databases, masses_mode, ion_mode, adducts, tolerance, tolerance_mode, unique_mz)
 
-  if (cmm_url == "http://ceumass.eps.uspceu.es/mediator/api/v3/batch") {
+  if (cmm_url == "https://ceumass.eps.uspceu.es/api/v3/batch") {
     cat("Using the CEU Mass Mediator server API.\n")
   } else {
     cat("Using the local/3rd party server API.\n")
@@ -133,19 +133,3 @@ batch_search <- function(cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/v3
     cat(paste0("Date: ", r$date, "\n"))
   }
 }
-
-
-# cmm_url          = "http://ceumass.eps.uspceu.es/mediator/api/v3/batch"
-# metabolites_type = 'all-except-peptides'
-# databases        = '["all-except-mine"]'
-# masses_mode      = 'mz'
-# ion_mode         = 'positive'
-# adducts          = '["M+H","M+Na"]'
-# tolerance        = 10
-# tolerance_mode   = 'ppm'
-# unique_mz        = c(670.4623, 1125.2555, 602.6180)
-#
-#
-# unique_mz_file = system.file("extdata", "unique_mz.csv", package = "cmmr")
-# unique_mz = as.array(utils::read.table(unique_mz_file, sep = ",",
-#                                        stringsAsFactors = FALSE)$V1)

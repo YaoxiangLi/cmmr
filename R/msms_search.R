@@ -70,8 +70,8 @@ msms_search <- function(ion_mass,
     precursor_mz_tolerance, precursor_mz_tolerance_mode,
     ion_mode, ionization_voltage, spectra_types
   )
-  if (cmm_url == "http://ceumass.eps.uspceu.es/mediator/api/msmssearch") {
-    # print("Using the CEU Mass Mediator server API.")
+  if (cmm_url == "https://ceumass.eps.uspceu.es/api/msmssearch") {
+    print("Using the CEU Mass Mediator server API.")
   } else {
     print("Using the local/3rd party server API.")
   }

@@ -50,7 +50,7 @@
 #'
 advanced_batch_search <- function(
     cmm_url = paste0(
-      "http://ceumass.eps.uspceu.es/mediator/api/v3/",
+      "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
       "advancedbatch"
     ),
     chemical_alphabet = "all",
@@ -78,7 +78,7 @@ advanced_batch_search <- function(
     all_retention_times, composite_spectra
   )
 
-  if (cmm_url == "http://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch") {
+  if (cmm_url == "https://ceumass.eps.uspceu.es/api/v3/advancedbatch") {
     cat("Using the CEU Mass Mediator server API.\n")
   } else {
     cat("Using the local/3rd party server API:\n")
