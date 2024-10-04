@@ -14,7 +14,7 @@ msms_search(
   ion_mode,
   ionization_voltage = "all",
   spectra_types = "experimental",
-  cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/msmssearch"
+  cmm_url = "https://ceumass.eps.uspceu.es/api/msmssearch"
 )
 }
 \arguments{
@@ -47,24 +47,20 @@ If all inputs are all correctly formatted, a dataframe will be returned for the 
   install.packages(c("httr", "progress", "RJSONIO"))
 }
 \examples{
-ms_ms_peaks = matrix(
-c(40.948, 0.174,
-  56.022, 0.424,
-  84.37, 53.488,
-  101.50, 8.285,
-  102.401, 0.775,
-  129.670, 100.000,
-  146.966, 20.070),
-ncol = 2,
-byrow = TRUE)
+ms_ms_peaks <- matrix(
+  c(
+    40.948, 0.174,
+    56.022, 0.424,
+    84.37, 53.488,
+    101.50, 8.285,
+    102.401, 0.775,
+    129.670, 100.000,
+    146.966, 20.070
+  ),
+  ncol = 2,
+  byrow = TRUE
+)
 
-msms_search(ion_mass = 147, ms_ms_peaks = ms_ms_peaks, ion_mode = 'positive')
+msms_search(ion_mass = 147, ms_ms_peaks = ms_ms_peaks, ion_mode = "positive")
 
-}
-\author{
-Yaoxiang Li \email{yl814@georgetown.edu}
-
-Georgetown University, USA
-
-License: GPL (>= 3)
 }

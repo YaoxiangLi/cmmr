@@ -5,7 +5,7 @@
 \title{Encapsulation of CEU Mass Mediator batch search API}
 \usage{
 batch_search(
-  cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/v3/batch",
+  cmm_url = "https://ceumass.eps.uspceu.es/api/v3/batch",
   metabolites_type = "all-except-peptides",
   databases = "[\\"all-except-mine\\"]",
   masses_mode = "mz",
@@ -17,7 +17,7 @@ batch_search(
 )
 }
 \arguments{
-\item{cmm_url}{'http://ceumass.eps.uspceu.es/mediator/api/v3/batch' or your local API Endpoint}
+\item{cmm_url}{'https://ceumass.eps.uspceu.es/api/v3/batch' or your local API Endpoint}
 
 \item{metabolites_type}{"all-except-peptides", "only-lipids", "all-including-peptides"}
 
@@ -50,11 +50,4 @@ dataframe for search results
 \dontrun{
 batch_search(c(670.4623, 1125.2555, 602.6180))
 }
-}
-\author{
-Yaoxiang Li \email{yl814@georgetown.edu}
-
-Georgetown University, USA
-
-License: GPL (>= 3)
 }

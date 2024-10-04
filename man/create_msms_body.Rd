@@ -41,10 +41,3 @@ If all inputs are all correctly formatted, a string of a POST request will be re
 \description{
 \code{create_msms_body} returns a string of a POST request body.
 }
-\author{
-Yaoxiang Li \email{yl814@georgetown.edu}
-
-Georgetown University, USA
-
-License: GPL (>= 3)
-}

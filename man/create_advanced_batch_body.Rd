@@ -60,10 +60,3 @@ If all inputs are all correctly formatted, a dataframe will be returned for the 
 \description{
 \code{create_advanced_batch_body} returns a string of advanced search POST request body.
 }
-\author{
-Yaoxiang Li \email{yl814@georgetown.edu}
-
-Georgetown University, USA
-
-License: GPL (>= 3)
-}

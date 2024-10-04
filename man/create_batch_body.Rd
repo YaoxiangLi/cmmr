@@ -40,33 +40,29 @@ If all inputs are all correctly formatted, a string of a POST request will be re
 }
 \examples{
 
-batch_body <- create_batch_body('all-except-peptides',
-                                '["all-except-mine"]',
-                                'mz',
-                                'positive',
-                                '["M+H","M+Na"]',
-                                10,
-                                'ppm',
-                                c(670.4623, 1125.2555, 602.6180))
+batch_body <- create_batch_body(
+  "all-except-peptides",
+  '["all-except-mine"]',
+  "mz",
+  "positive",
+  '["M+H","M+Na"]',
+  10,
+  "ppm",
+  c(670.4623, 1125.2555, 602.6180)
+)
 
-batch_body <- create_batch_body('all-except-peptides',
-                                '["all-except-mine"]',
-                                'mz',
-                                'negative',
-                                '["M-H","M+Cl"]',
-                                10,
-                                'ppm',
-                                c(670.4623, 1125.2555, 602.6180))
+batch_body <- create_batch_body(
+  "all-except-peptides",
+  '["all-except-mine"]',
+  "mz",
+  "negative",
+  '["M-H","M+Cl"]',
+  10,
+  "ppm",
+  c(670.4623, 1125.2555, 602.6180)
+)
 
 \dontrun{
 create_batch_body(c(670.4623, 1125.2555, 602.6180))
 }
-
-}
-\author{
-Yaoxiang Li \email{yl814@georgetown.edu}
-
-Georgetown University, USA
-
-License: GPL (>= 3)
 }

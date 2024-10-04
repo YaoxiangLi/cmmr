@@ -5,7 +5,7 @@
 \title{Encapsulation of CEU Mass Mediator advanced batch search API.}
 \usage{
 advanced_batch_search(
-  cmm_url = paste0("http://ceumass.eps.uspceu.es/mediator/api/v3/", "advancedbatch"),
+  cmm_url = paste0("https://ceumass.eps.uspceu.es/api/v3/advancedbatch", "advancedbatch"),
   chemical_alphabet = "all",
   modifiers_type = "none",
   metabolites_type = "all-except-peptides",
@@ -67,32 +67,27 @@ If all inputs are all correctly formatted, a dataframe will be returned for the 
 }
 \examples{
 df <- advanced_batch_search(
-cmm_url             = paste0(
-  'http://ceumass.eps.uspceu.es/mediator/api/v3/',
-  'advancedbatch'),
-chemical_alphabet   = 'all',
-modifiers_type      = 'none',
-metabolites_type    = 'all-except-peptides',
-databases           = '["hmdb"]',
-masses_mode         = 'mz',
-ion_mode            = 'positive',
-adducts             = '["all"]',
-deuterium           = 'false',
-tolerance           = '7.5',
-tolerance_mode      = 'ppm',
-masses              = '[400.3432, 288.2174]',
-all_masses          = '[]',
-retention_times     = '[18.842525, 4.021555]',
-all_retention_times = '[]',
-composite_spectra   = paste0(
-  '[[{ "mz": 400.3432, "intensity": 307034.88 }, ',
-  '{ "mz": 311.20145, "intensity": 400.03336 }]]'
-))
-}
-\author{
-Yaoxiang Li \email{yl814@georgetown.edu}
-
-Georgetown University, USA
-
-License: GPL (>= 3)
+  cmm_url = paste0(
+    "http://ceumass.eps.uspceu.es/mediator/api/v3/",
+    "advancedbatch"
+  ),
+  chemical_alphabet = "all",
+  modifiers_type = "none",
+  metabolites_type = "all-except-peptides",
+  databases = '["hmdb"]',
+  masses_mode = "mz",
+  ion_mode = "positive",
+  adducts = '["all"]',
+  deuterium = "false",
+  tolerance = "7.5",
+  tolerance_mode = "ppm",
+  masses = "[400.3432, 288.2174]",
+  all_masses = "[]",
+  retention_times = "[18.842525, 4.021555]",
+  all_retention_times = "[]",
+  composite_spectra = paste0(
+    '[[{ "mz": 400.3432, "intensity": 307034.88 }, ',
+    '{ "mz": 311.20145, "intensity": 400.03336 }]]'
+  )
+)
 }
