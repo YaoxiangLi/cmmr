@@ -17,37 +17,42 @@ batch_search(
 )
 }
 \arguments{
-\item{cmm_url}{'https://ceumass.eps.uspceu.es/api/v3/batch' or your local API Endpoint}
+\item{cmm_url}{A URL string for the CEU Mass Mediator or a local API endpoint.}
 
-\item{metabolites_type}{"all-except-peptides", "only-lipids", "all-including-peptides"}
+\item{metabolites_type}{Search metabolites type: "all-except-peptides", "only-lipids", or "all-including-peptides".}
 
-\item{databases}{"all", "all-except-mine", "HMDB", "LipidMaps", "Metlin", "Kegg", "in-house", "mine"}
+\item{databases}{A JSON array of databases to search: e.g., "all", "HMDB", "LipidMaps", etc.}
 
-\item{masses_mode}{"neutral", "mz"}
+\item{masses_mode}{Masses mode: "neutral" or "mz".}
 
-\item{ion_mode}{"positive", "negative"}
+\item{ion_mode}{Ionization mode: "positive" or "negative".}
 
-\item{adducts}{for positive mode [M+H, M+2H, M+Na, M+K,M+NH4, M+H-H2O]}
+\item{adducts}{A JSON array of adducts to include in the search, e.g., '["M+H", "M+Na"]'.}
 
-\item{tolerance}{double (Range: [0..100])}
+\item{tolerance}{A numeric tolerance value (range: 0-100).}
 
-\item{tolerance_mode}{"ppm", "mDa"}
+\item{tolerance_mode}{Tolerance mode: "ppm" or "mDa".}
 
-\item{unique_mz}{An array of unique m/zs}
+\item{unique_mz}{A numeric vector of unique m/z values for the search.}
 }
 \value{
-dataframe for search results
+A dataframe containing search results.
 }
 \description{
-\code{batch_search} returns the dataframe of all the database search results.
-  using the following code to install the dependencies:
-  install.packages(c("httr", "progress", "RJSONIO"))
+\code{batch_search} returns a dataframe with the results from the database search.
+Use the following code to install required dependencies:
+install.packages(c("httr", "progress", "RJSONIO", "cli"))
 }
 \examples{
-
-
-
 \dontrun{
-batch_search(c(670.4623, 1125.2555, 602.6180))
+df_pos <- batch_search('https://ceumass.eps.uspceu.es/api/v3/batch',
+                       'all-except-peptides',
+                       '["all-except-mine"]',
+                       'mz',
+                       'positive',
+                       '["M+H","M+Na"]',
+                       10,
+                       'ppm',
+                       c(670.4623, 1125.2555, 602.6180))
 }
 }
