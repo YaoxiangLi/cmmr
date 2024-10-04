@@ -43,7 +43,7 @@ msms_search <- function(ion_mass,
                         ion_mode,
                         ionization_voltage = "all",
                         spectra_types = "experimental",
-                        cmm_url = "http://ceumass.eps.uspceu.es/mediator/api/msmssearch") {
+                        cmm_url = "https://ceumass.eps.uspceu.es/api/msmssearch") {
   columns_to_save <- c(
     "spectral_display_tools",
     "identifier",
