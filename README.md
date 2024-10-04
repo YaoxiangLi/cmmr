@@ -2,7 +2,6 @@
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/cmmr)](https://cran.r-project.org/package=cmmr)
-[![Travis build status](https://travis-ci.org/lzyacht/cmmr.svg?branch=master)](https://travis-ci.org/lzyacht/cmmr)
 <!-- badges: end -->
 
 CEU Mass Mediator RESTful API
@@ -13,7 +12,7 @@ Please find the CEU Mass Mediator source code repository:
 [CEU Mass Mediator source code on GitHub](https://github.com/albertogilf/ceuMassMediator)
 
 The CEU Mass Mediator Website:
-[CEU Mass Mediator](http://ceumass.eps.uspceu.es/)
+[CEU Mass Mediator](https://ceumass.eps.uspceu.es/)
 
 ## API Endpoint
 
