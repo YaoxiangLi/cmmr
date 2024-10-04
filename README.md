@@ -17,13 +17,13 @@ The CEU Mass Mediator Website:
 ## API Endpoint
 
 Batch search
-http://ceumass.eps.uspceu.es/mediator/api/v3/batch
+https://ceumass.eps.uspceu.es/api/v3/batch
 
 Advanced search
-http://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch
+https://ceumass.eps.uspceu.es/api/v3/advancedbatch
 
 MS/MS search
-http://ceumass.eps.uspceu.es/mediator/api/msmssearch
+https://ceumass.eps.uspceu.es/api/msmssearch
 
 ## About
 
@@ -56,7 +56,7 @@ Batch search all result in positive mode
 ```r
 library(cmmr)
 
-batch_df_pos <- batch_search('http://ceumass.eps.uspceu.es/mediator/api/v3/batch',
+batch_df_pos <- batch_search('https://ceumass.eps.uspceu.es/api/v3/batch',
                              'all-except-peptides',
                              '["all-except-mine"]',
                              'mz',
@@ -76,7 +76,7 @@ Batch search all result in negative mode
 ```r
 library(cmmr)
 
-batch_df_neg <- batch_search('http://ceumass.eps.uspceu.es/mediator/api/v3/batch',
+batch_df_neg <- batch_search('https://ceumass.eps.uspceu.es/api/v3/batch',
                              'all-except-peptides',
                              '["all-except-mine"]',
                              'mz',
@@ -99,7 +99,7 @@ unique_mz_file <- system.file("extdata", "unique_mz.csv", package = "cmmr")
 unique_mz <- read.table(unique_mz_file, sep = ",", stringsAsFactors = FALSE, header = FALSE)
 unique_mz <- as.array(unique_mz[, 1])
 
-batch_df_neg <- batch_search('http://ceumass.eps.uspceu.es/mediator/api/v3/batch',
+batch_df_neg <- batch_search('https://ceumass.eps.uspceu.es/api/v3/batch',
                              'all-except-peptides',
                              '["all-except-mine"]',
                              'mz',
@@ -130,9 +130,7 @@ write.table(batch_df_neg, "batch_df_neg.csv", sep = ",", row.names = FALSE)
 library(cmmr)
 
 advanced_batch_df <- advanced_batch_search(
-  cmm_url             = paste0(
-    'http://ceumass.eps.uspceu.es/mediator/api/v3/',
-    'advancedbatch'),
+  cmm_url             = 'https://ceumass.eps.uspceu.es/api/v3/advancedbatch',
   chemical_alphabet   = 'all',
   modifiers_type      = 'none',
   metabolites_type    = 'all-except-peptides',
