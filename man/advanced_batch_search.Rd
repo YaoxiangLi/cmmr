@@ -70,7 +70,7 @@ A dataframe containing the search results from the CEU Mass Mediator API.
 and returns a dataframe of search results.
 }
 \examples{
-\dontrun{
+\donttest{
 df <- advanced_batch_search(
   cmm_url = "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
   chemical_alphabet = "ALL",

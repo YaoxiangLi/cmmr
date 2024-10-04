@@ -14,7 +14,7 @@
 #'
 #' @return A dataframe containing search results.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' df_pos <- batch_search(
 #'   "https://ceumass.eps.uspceu.es/api/v3/batch",
 #'   "all-except-peptides",

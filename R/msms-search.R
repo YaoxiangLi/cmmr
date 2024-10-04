@@ -16,7 +16,7 @@
 #'
 #' @return A dataframe containing the search results from the CEU Mass Mediator API.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' ms_ms_peaks <- matrix(
 #'   c(
 #'     40.948, 0.174,
