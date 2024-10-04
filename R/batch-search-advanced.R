@@ -45,9 +45,13 @@
 #'   all_masses = "[]",
 #'   retention_times = c(18.842525, 4.021555),
 #'   all_retention_times = "[]",
-#'   composite_spectra = '[ [ { "mz": 400.3432, "intensity": 307034.88 }, { "mz": 311.20145, "intensity": 400.03336 } ] ]'
+#'   composite_spectra = paste0(
+#'     '[ [ { "mz": 400.3, "intensity": 307034.9 },',
+#'     '   { "mz": 311.2, "intensity": 400.1 } ] ]'
+#'   )
 #' )
 #' }
+
 #' @export
 advanced_batch_search <- function(
     cmm_url = "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
@@ -61,12 +65,11 @@ advanced_batch_search <- function(
     deuterium = FALSE,
     tolerance = 7.5,
     tolerance_mode = "ppm",
-    masses = c(400.3432, 288.2174),
+    masses = NULL,
     all_masses = "[]",
-    retention_times = c(18.842525, 4.021555),
+    retention_times = NULL,
     all_retention_times = "[]",
-    composite_spectra = '[ [ { "mz": 400.3432, "intensity": 307034.88 }, { "mz": 311.20145, "intensity": 400.03336 } ] ]'
-) {
+    composite_spectra = NULL) {
   post_body <- create_advanced_batch_body(
     chemical_alphabet, modifiers_type,
     metabolites_type, databases, masses_mode, ion_mode, adducts, deuterium,
@@ -123,7 +126,6 @@ advanced_batch_search <- function(
 
     cli::cli_alert_success("Database search results parsed successfully.")
     return(df)
-
   } else {
     cli::cli_alert_danger("Failed to connect to the API service (Status: {r$status_code}).")
     return(NULL)

@@ -1,27 +1,28 @@
-#' Encapsulation of CEU Mass Mediator batch search API.
+#' MS/MS Search using CEU Mass Mediator API
 #'
-#' \code{batch_search} returns the dataframe of all the database search results.
-#'   using the following code to install the dependencies:
-#'   install.packages(c("httr", "progress", "RJSONIO"))
+#' \code{msms_search} performs an MS/MS search on the CEU Mass Mediator API
+#' and returns a dataframe with the search results.
 #'
-#' @param ion_mass ion_mass
-#' @param ms_ms_peaks ms_ms_peaks
-#' @param precursor_ion_tolerance precursor_ion_tolerance
-#' @param precursor_ion_tolerance_mode precursor_ion_tolerance_mode
-#' @param precursor_mz_tolerance precursor_mz_tolerance
-#' @param precursor_mz_tolerance_mode precursor_mz_tolerance_mode
-#' @param ion_mode ion_mode
-#' @param ionization_voltage ionization_voltage
-#' @param spectra_types spectra_types
-#' @param cmm_url "http://ceumass.eps.uspceu.es/mediator/api/msmssearch" or your local one
+#' @param ion_mass Numeric. Mass of the ion to search for.
+#' @param ms_ms_peaks Matrix. The MS/MS peaks, with two columns representing mass and intensity.
+#' @param precursor_ion_tolerance Numeric. Tolerance for the precursor ion (default: 100.0).
+#' @param precursor_ion_tolerance_mode Character. Tolerance mode for precursor ion: \code{"ppm"} or \code{"mDa"} (default: "mDa").
+#' @param precursor_mz_tolerance Numeric. Tolerance for the m/z (default: 500.0).
+#' @param precursor_mz_tolerance_mode Character. Tolerance mode for precursor m/z: \code{"ppm"} or \code{"mDa"} (default: "mDa").
+#' @param ion_mode Character. Ionization mode: \code{"positive"} or \code{"negative"}.
+#' @param ionization_voltage Character. Ionization voltage to use (default: "all").
+#' @param spectra_types Character. Spectra types: \code{"experimental"} or other supported types.
+#' @param cmm_url Character. URL for the CEU Mass Mediator API (default: "https://ceumass.eps.uspceu.es/api/msmssearch").
 #'
-#' @return If all inputs are all correctly formatted, a dataframe will be returned for the result.
-#' @examples ms_ms_peaks <- matrix(
+#' @return A dataframe containing the search results from the CEU Mass Mediator API.
+#' @examples
+#' \dontrun{
+#' ms_ms_peaks <- matrix(
 #'   c(
 #'     40.948, 0.174,
 #'     56.022, 0.424,
-#'     84.37, 53.488,
-#'     101.50, 8.285,
+#'     84.370, 53.488,
+#'     101.500, 8.285,
 #'     102.401, 0.775,
 #'     129.670, 100.000,
 #'     146.966, 20.070
@@ -30,10 +31,13 @@
 #'   byrow = TRUE
 #' )
 #'
-#' msms_search(ion_mass = 147, ms_ms_peaks = ms_ms_peaks, ion_mode = "positive")
-#'
+#' df <- msms_search(
+#'   ion_mass = 147,
+#'   ms_ms_peaks = ms_ms_peaks,
+#'   ion_mode = "positive"
+#' )
+#' }
 #' @export
-#'
 msms_search <- function(ion_mass,
                         ms_ms_peaks,
                         precursor_ion_tolerance = 100.0,
@@ -70,48 +74,41 @@ msms_search <- function(ion_mass,
     precursor_mz_tolerance, precursor_mz_tolerance_mode,
     ion_mode, ionization_voltage, spectra_types
   )
-  if (cmm_url == "https://ceumass.eps.uspceu.es/api/msmssearch") {
-    print("Using the CEU Mass Mediator server API.")
-  } else {
-    print("Using the local/3rd party server API.")
-  }
+
+  cli::cli_alert_info("Connecting to the CEU Mass Mediator API at {cmm_url}...")
 
   r <- httr::POST(url = cmm_url, body = body, httr::content_type("application/json"))
 
   if (r$status_code == 200) {
-    cat(paste0("Status: ", r$status_code, ", Success!\n"))
-    cat(paste0("Date: ", r$date, "\n"))
+    cli::cli_alert_success("API request successful (Status: {r$status_code}).")
+
     json_file <- RJSONIO::fromJSON(httr::content(r, "text", encoding = "UTF-8"))$results
     if (length(json_file) == 0) {
-      print("No validation found in MS/MS search.")
-      return("No validation found in MS/MS search")
+      cli::cli_alert_warning("No validation found in MS/MS search.")
+      return(NULL)
     }
 
     pb <- progress::progress_bar$new(
       format = "  Parsing database search results [:bar] :percent in :elapsed",
-      total  = length(json_file) - 1,
-      clear  = FALSE,
-      width  = 100
+      total = length(json_file),
+      clear = FALSE,
+      width = 100
     )
 
-    df <- json_file[[1]]
-    df <- as.data.frame(df[names(df) %in% columns_to_save])
-    if (length(json_file) > 1) {
-      for (i in 2:length(json_file)) {
-        pb$tick()
-        dfi <- json_file[[i]]
-        dfi <- as.data.frame(dfi[names(dfi) %in% columns_to_save])
-        df <- rbind(df, dfi)
-      }
-    }
+    df_list <- lapply(seq_along(json_file), function(i) {
+      pb$tick()
+      record <- json_file[[i]]
+      as.data.frame(record[names(record) %in% columns_to_save], stringsAsFactors = FALSE)
+    })
 
-
+    df <- do.call(rbind, df_list)
     df <- df[, columns_to_save]
     colnames(df) <- columns_to_name
 
+    cli::cli_alert_success("Database search results parsed successfully.")
     return(df)
   } else {
-    cat(paste0("Status: ", r$status_code, ", Fail to connect the API service!\n"))
-    cat(paste0("Date: ", r$date, "\n"))
+    cli::cli_alert_danger("Failed to connect to the API service (Status: {r$status_code}).")
+    return(NULL)
   }
 }

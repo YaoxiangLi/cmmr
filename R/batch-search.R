@@ -1,8 +1,6 @@
 #' Encapsulation of CEU Mass Mediator batch search API
 #'
 #' \code{batch_search} returns a dataframe with the results from the database search.
-#' Use the following code to install required dependencies:
-#' install.packages(c("httr", "progress", "RJSONIO", "cli"))
 #'
 #' @param cmm_url A URL string for the CEU Mass Mediator or a local API endpoint.
 #' @param metabolites_type Search metabolites type: "all-except-peptides", "only-lipids", or "all-including-peptides".
@@ -17,15 +15,17 @@
 #' @return A dataframe containing search results.
 #' @examples
 #' \dontrun{
-#' df_pos <- batch_search('https://ceumass.eps.uspceu.es/api/v3/batch',
-#'                        'all-except-peptides',
-#'                        '["all-except-mine"]',
-#'                        'mz',
-#'                        'positive',
-#'                        '["M+H","M+Na"]',
-#'                        10,
-#'                        'ppm',
-#'                        c(670.4623, 1125.2555, 602.6180))
+#' df_pos <- batch_search(
+#'   "https://ceumass.eps.uspceu.es/api/v3/batch",
+#'   "all-except-peptides",
+#'   '["all-except-mine"]',
+#'   "mz",
+#'   "positive",
+#'   '["M+H","M+Na"]',
+#'   10,
+#'   "ppm",
+#'   c(670.4623, 1125.2555, 602.6180)
+#' )
 #' }
 #' @export
 batch_search <- function(cmm_url = "https://ceumass.eps.uspceu.es/api/v3/batch",
@@ -37,7 +37,6 @@ batch_search <- function(cmm_url = "https://ceumass.eps.uspceu.es/api/v3/batch",
                          tolerance = 10,
                          tolerance_mode = "ppm",
                          unique_mz) {
-
   columns_to_save <- c(
     "identifier", "EM", "name", "formula", "adduct",
     "molecular_weight", "error_ppm", "ionizationScore", "finalScore",
@@ -91,7 +90,6 @@ batch_search <- function(cmm_url = "https://ceumass.eps.uspceu.es/api/v3/batch",
 
     cli::cli_alert_success("Database search results parsed successfully.")
     return(df)
-
   } else {
     cli::cli_alert_danger("Failed to connect to the API service (Status: {r$status_code}).")
   }

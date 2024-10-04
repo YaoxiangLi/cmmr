@@ -16,12 +16,11 @@ advanced_batch_search(
   deuterium = FALSE,
   tolerance = 7.5,
   tolerance_mode = "ppm",
-  masses = c(400.3432, 288.2174),
+  masses = NULL,
   all_masses = "[]",
-  retention_times = c(18.842525, 4.021555),
+  retention_times = NULL,
   all_retention_times = "[]",
-  composite_spectra =
-    "[ [ { \\"mz\\": 400.3432, \\"intensity\\": 307034.88 }, { \\"mz\\": 311.20145, \\"intensity\\": 400.03336 } ] ]"
+  composite_spectra = NULL
 )
 }
 \arguments{
@@ -88,7 +87,10 @@ df <- advanced_batch_search(
   all_masses = "[]",
   retention_times = c(18.842525, 4.021555),
   all_retention_times = "[]",
-  composite_spectra = '[ [ { "mz": 400.3432, "intensity": 307034.88 }, { "mz": 311.20145, "intensity": 400.03336 } ] ]'
+  composite_spectra = paste0(
+    '[ [ { "mz": 400.3, "intensity": 307034.9 },',
+    '   { "mz": 311.2, "intensity": 400.1 } ] ]'
+  )
 )
 }
 }

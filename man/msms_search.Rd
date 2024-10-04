@@ -2,7 +2,7 @@
 % Please edit documentation in R/msms-search.R
 \name{msms_search}
 \alias{msms_search}
-\title{Encapsulation of CEU Mass Mediator batch search API.}
+\title{MS/MS Search using CEU Mass Mediator API}
 \usage{
 msms_search(
   ion_mass,
@@ -18,41 +18,41 @@ msms_search(
 )
 }
 \arguments{
-\item{ion_mass}{ion_mass}
+\item{ion_mass}{Numeric. Mass of the ion to search for.}
 
-\item{ms_ms_peaks}{ms_ms_peaks}
+\item{ms_ms_peaks}{Matrix. The MS/MS peaks, with two columns representing mass and intensity.}
 
-\item{precursor_ion_tolerance}{precursor_ion_tolerance}
+\item{precursor_ion_tolerance}{Numeric. Tolerance for the precursor ion (default: 100.0).}
 
-\item{precursor_ion_tolerance_mode}{precursor_ion_tolerance_mode}
+\item{precursor_ion_tolerance_mode}{Character. Tolerance mode for precursor ion: \code{"ppm"} or \code{"mDa"} (default: "mDa").}
 
-\item{precursor_mz_tolerance}{precursor_mz_tolerance}
+\item{precursor_mz_tolerance}{Numeric. Tolerance for the m/z (default: 500.0).}
 
-\item{precursor_mz_tolerance_mode}{precursor_mz_tolerance_mode}
+\item{precursor_mz_tolerance_mode}{Character. Tolerance mode for precursor m/z: \code{"ppm"} or \code{"mDa"} (default: "mDa").}
 
-\item{ion_mode}{ion_mode}
+\item{ion_mode}{Character. Ionization mode: \code{"positive"} or \code{"negative"}.}
 
-\item{ionization_voltage}{ionization_voltage}
+\item{ionization_voltage}{Character. Ionization voltage to use (default: "all").}
 
-\item{spectra_types}{spectra_types}
+\item{spectra_types}{Character. Spectra types: \code{"experimental"} or other supported types.}
 
-\item{cmm_url}{"http://ceumass.eps.uspceu.es/mediator/api/msmssearch" or your local one}
+\item{cmm_url}{Character. URL for the CEU Mass Mediator API (default: "https://ceumass.eps.uspceu.es/api/msmssearch").}
 }
 \value{
-If all inputs are all correctly formatted, a dataframe will be returned for the result.
+A dataframe containing the search results from the CEU Mass Mediator API.
 }
 \description{
-\code{batch_search} returns the dataframe of all the database search results.
-  using the following code to install the dependencies:
-  install.packages(c("httr", "progress", "RJSONIO"))
+\code{msms_search} performs an MS/MS search on the CEU Mass Mediator API
+and returns a dataframe with the search results.
 }
 \examples{
+\dontrun{
 ms_ms_peaks <- matrix(
   c(
     40.948, 0.174,
     56.022, 0.424,
-    84.37, 53.488,
-    101.50, 8.285,
+    84.370, 53.488,
+    101.500, 8.285,
     102.401, 0.775,
     129.670, 100.000,
     146.966, 20.070
@@ -61,6 +61,10 @@ ms_ms_peaks <- matrix(
   byrow = TRUE
 )
 
-msms_search(ion_mass = 147, ms_ms_peaks = ms_ms_peaks, ion_mode = "positive")
-
+df <- msms_search(
+  ion_mass = 147,
+  ms_ms_peaks = ms_ms_peaks,
+  ion_mode = "positive"
+)
+}
 }
