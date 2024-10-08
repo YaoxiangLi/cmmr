@@ -128,8 +128,8 @@ write.table(batch_df_neg, "batch_df_neg.csv", sep = ",", row.names = FALSE)
 library(cmmr)
 
 advanced_batch_df <- advanced_batch_search(
-  cmm_url = 'https://ceumass.eps.uspceu.es/api/v3/advancedbatch',
-  chemical_alphabet = 'ALL',
+  cmm_url = 'https://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch',
+  chemical_alphabet = 'all',
   modifiers_type = 'none',
   metabolites_type = 'all-except-peptides',
   databases = '["hmdb"]',
