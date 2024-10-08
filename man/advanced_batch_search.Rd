@@ -5,7 +5,7 @@
 \title{Advanced Batch Search using CEU Mass Mediator API}
 \usage{
 advanced_batch_search(
-  cmm_url = "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
+  cmm_url = "https://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch",
   chemical_alphabet = "ALL",
   modifiers_type = "none",
   metabolites_type = "all-except-peptides",
@@ -72,7 +72,7 @@ and returns a dataframe of search results.
 \examples{
 \donttest{
 df <- advanced_batch_search(
-  cmm_url = "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
+  cmm_url = "https://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch",
   chemical_alphabet = "ALL",
   modifiers_type = "none",
   metabolites_type = "all-except-peptides",
