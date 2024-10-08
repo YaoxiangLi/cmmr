@@ -30,7 +30,7 @@
 #' @examples
 #' \donttest{
 #' df <- advanced_batch_search(
-#'   cmm_url = "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
+#'   cmm_url = "https://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch",
 #'   chemical_alphabet = "ALL",
 #'   modifiers_type = "none",
 #'   metabolites_type = "all-except-peptides",
@@ -54,7 +54,7 @@
 
 #' @export
 advanced_batch_search <- function(
-    cmm_url = "https://ceumass.eps.uspceu.es/api/v3/advancedbatch",
+    cmm_url = "https://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch",
     chemical_alphabet = "ALL",
     modifiers_type = "none",
     metabolites_type = "all-except-peptides",
@@ -62,14 +62,14 @@ advanced_batch_search <- function(
     masses_mode = "mz",
     ion_mode = "positive",
     adducts = '["all"]',
-    deuterium = FALSE,
-    tolerance = 7.5,
+    deuterium = "false",
+    tolerance = 10,
     tolerance_mode = "ppm",
     masses = NULL,
     all_masses = "[]",
     retention_times = NULL,
     all_retention_times = "[]",
-    composite_spectra = NULL) {
+    composite_spectra = "[]") {
   post_body <- create_advanced_batch_body(
     chemical_alphabet, modifiers_type,
     metabolites_type, databases, masses_mode, ion_mode, adducts, deuterium,
