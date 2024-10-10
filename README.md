@@ -20,7 +20,7 @@ This package was built on top of the CEU Mass Mediator API by [Albert Gil](https
 The package interacts with the following API endpoints:
 
 - **Batch Search**: [https://ceumass.eps.uspceu.es/api/v3/batch](https://ceumass.eps.uspceu.es/api/v3/batch)
-- **Advanced Search**: [https://ceumass.eps.uspceu.es/api/v3/advancedbatch](https://ceumass.eps.uspceu.es/api/v3/advancedbatch)
+- **Advanced Batch Search**: [https://ceumass.eps.uspceu.es/api/v3/advancedbatch](https://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch)
 - **MS/MS Search**: [https://ceumass.eps.uspceu.es/api/msmssearch](https://ceumass.eps.uspceu.es/api/msmssearch)
 
 ## Installation
@@ -128,26 +128,25 @@ write.table(batch_df_neg, "batch_df_neg.csv", sep = ",", row.names = FALSE)
 library(cmmr)
 
 advanced_batch_df <- advanced_batch_search(
-  cmm_url = 'https://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch',
-  chemical_alphabet = 'all',
-  modifiers_type = 'none',
-  metabolites_type = 'all-except-peptides',
-  databases = '["hmdb"]',
-  masses_mode = 'mz',
-  ion_mode = 'positive',
-  adducts = '["all"]',
-  deuterium = FALSE,
-  tolerance = 7.5,
-  tolerance_mode = 'ppm',
-  masses = c(400.3432, 288.2174),
-  all_masses = '[]',
-  retention_times = c(18.842525, 4.021555),
-  all_retention_times = '[]',
-  composite_spectra = paste0(
-    '[ [ { "mz": 400.3432, "intensity": 307034.88 },',
-    ' { "mz": 311.20145, "intensity": 400.03336 } ] ]'
-  )
+cmm_url = "https://ceumass.eps.uspceu.es/mediator/api/v3/advancedbatch",
+chemical_alphabet = "all",
+modifiers_type = "none",
+metabolites_type = "all-except-peptides",
+databases = list("hmdb"),
+masses_mode = "mz",
+ion_mode = "positive",
+adducts = list("all"),
+deuterium = FALSE,
+tolerance = 10.0,
+tolerance_mode = "ppm",
+masses = c(399.3367, 421.31686, 315.2424, 337.2234, 280.2402),
+all_masses = list(),
+retention_times = c(18.842525, 18.842525, 8.144917, 8.144917, 28.269503, 4.021555),
+all_retention_times = list(),
+composite_spectra = list(),
+all_composite_spectra = list()
 )
+
 
 head(advanced_batch_df)
 str(advanced_batch_df)

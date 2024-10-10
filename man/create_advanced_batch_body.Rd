@@ -2,61 +2,63 @@
 % Please edit documentation in R/create-advanced-batch-body.R
 \name{create_advanced_batch_body}
 \alias{create_advanced_batch_body}
-\title{Create POST request Body for batch search}
+\title{Create POST request Body for advanced batch search}
 \usage{
 create_advanced_batch_body(
   chemical_alphabet = "all",
   modifiers_type = "none",
   metabolites_type = "all-except-peptides",
-  databases = "[\\"hmdb\\"]",
+  databases = list("hmdb"),
   masses_mode = "mz",
   ion_mode = "positive",
-  adducts = "[\\"all\\"]",
-  deuterium = "false",
-  tolerance = "7.5",
+  adducts = list("all"),
+  deuterium = FALSE,
+  tolerance = 10,
   tolerance_mode = "ppm",
-  masses = "[400.3432, 288.2174]",
-  all_masses = "[]",
-  retention_times = "[18.842525, 4.021555]",
-  all_retention_times = "[]",
-  composite_spectra = paste0("[[{ \\"mz\\": 400.3432, \\"intensity\\": 307034.88 }, ",
-    "{ \\"mz\\": 311.20145, \\"intensity\\": 400.03336 }]]")
+  masses = c(399.3367, 421.3169, 315.2424, 337.2234, 280.2402),
+  all_masses = list(),
+  retention_times = c(18.8425, 18.8425, 8.1449, 8.1449, 28.2695, 4.0216),
+  all_retention_times = list(),
+  composite_spectra = list(),
+  all_composite_spectra = list()
 )
 }
 \arguments{
-\item{chemical_alphabet}{"CHNOPS", "CHNOPSCL", "ALL"}
+\item{chemical_alphabet}{A string for the chemical alphabet: "CHNOPS", "CHNOPSCL", "ALL".}
 
-\item{modifiers_type}{"none", "NH3", "HCOO", "CH3COO", "HCOONH3", "CH3COONH3"}
+\item{modifiers_type}{A string for the modifier type: "none", "NH3", "HCOO", etc.}
 
-\item{metabolites_type}{"all-except-peptides", "only-lipids", "all-including-peptides"}
+\item{metabolites_type}{A string for metabolites type: "all-except-peptides", "only-lipids", etc.}
 
-\item{databases}{"all", "all-except-mine", "HMDB", "LipidMaps", "Metlin", "Kegg", "in-house", "mine"}
+\item{databases}{A vector of databases to search: e.g., list("HMDB").}
 
-\item{masses_mode}{"neutral", "mz"}
+\item{masses_mode}{A string specifying masses mode: "neutral" or "mz".}
 
-\item{ion_mode}{"positive", "negative"}
+\item{ion_mode}{A string for the ionization mode: "positive", "negative", etc.}
 
-\item{adducts}{for positive mode ["M+H", "M+2H", "M+Na", "M+K", "M+NH4", "M+H-H2O"] for negative mode ["M-H", "M+Cl", "M+FA-H", "M-H-H2O"], for neutral ["M"]}
+\item{adducts}{A vector of adducts to include in the search, e.g., list("M+H", "M+Na").}
 
-\item{deuterium}{boolean 'true' 'false'}
+\item{deuterium}{Logical value: whether to consider deuterium substitutions (TRUE or FALSE).}
 
-\item{tolerance}{double (Range: [0..100])}
+\item{tolerance}{Numeric value specifying the tolerance.}
 
-\item{tolerance_mode}{"ppm", "mDa"}
+\item{tolerance_mode}{A string for the tolerance mode: "ppm" or "mDa".}
 
-\item{masses}{double}
+\item{masses}{Numeric vector of masses to search.}
 
-\item{all_masses}{array of doubles}
+\item{all_masses}{Empty array for all masses (optional).}
 
-\item{retention_times}{double}
+\item{retention_times}{Numeric vector of retention times.}
 
-\item{all_retention_times}{array of doubles}
+\item{all_retention_times}{Empty array for retention times (optional).}
 
-\item{composite_spectra}{array of arrays of spectra_object}
+\item{composite_spectra}{Empty array for composite spectra.}
+
+\item{all_composite_spectra}{A list for all composite spectra (optional)}
 }
 \value{
-If all inputs are all correctly formatted, a dataframe will be returned for the result.
+A properly formatted JSON body for the POST request.
 }
 \description{
-\code{create_advanced_batch_body} returns a string of advanced search POST request body.
+\code{create_advanced_batch_body} creates a list for the advanced batch search POST request.
 }

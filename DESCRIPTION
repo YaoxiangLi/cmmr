@@ -1,10 +1,11 @@
 Package: cmmr
 Title: CEU Mass Mediator RESTful API
-Version: 1.0.4
+Version: 1.0.5
 Depends: R (>= 4.4.0)
 Imports: httr,
   progress, 
   RJSONIO,
+  jsonlite,
   cli
 Authors@R: c(
     person("Yaoxiang", "Li",
